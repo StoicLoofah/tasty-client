@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Bookmark } from '../bookmark.ts';
+import { BookmarkService } from '../bookmark.service.ts';
 import { Tag } from '../tag.ts';
 
 @Component({
@@ -12,25 +13,10 @@ export class DashboardComponent implements OnInit {
   bookmarks: Bookmark[] = [];
   tags: Tag[] = [];
 
-  constructor() { }
+  constructor(private bookmarkService: BookmarkService) { }
 
   ngOnInit() {
-      this.bookmarks = [
-          {
-              notes: '',
-              tags: ['Tech', 'News'],
-              timeAdded: new Date(),
-              title: 'The Verge',
-              url: 'http://theverge.com',
-          },
-          {
-              notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-              tags: ['Entertainment'],
-              timeAdded: new Date(),
-              title: 'Geek & Sundry',
-              url: 'http://geekandsundry.com',
-          }
-      ];
+      this.bookmarks = this.bookmarkService.getBookmarks();
       this.tags = [
           {name: 'Entertainment'},
           {name: 'News'},

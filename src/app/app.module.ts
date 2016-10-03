@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BookmarkService } from './bookmark.service'
 
 import { TastyClientRoutingModule } from './app-routing.module';
 
@@ -19,7 +20,11 @@ import { TastyClientRoutingModule } from './app-routing.module';
     HttpModule,
     TastyClientRoutingModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    BookmarkService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
