@@ -10,18 +10,22 @@ import { Tag } from '../tag.ts';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  bookmarks: Bookmark[] = [];
+  bookmarks: Bookmark[];
   tags: Tag[] = [];
 
   constructor(private bookmarkService: BookmarkService) { }
 
+  getBookmarks(): void {
+    this.bookmarkService.getBookmarks().then(bookmarks => this.bookmarks = bookmarks);
+  }
+
   ngOnInit() {
-      this.bookmarks = this.bookmarkService.getBookmarks();
-      this.tags = [
-          {name: 'Entertainment'},
-          {name: 'News'},
-          {name: 'Tech'}
-      ];
+    this.getBookmarks();
+    this.tags = [
+        {name: 'Entertainment'},
+        {name: 'News'},
+        {name: 'Tech'}
+    ];
   }
 
 }
