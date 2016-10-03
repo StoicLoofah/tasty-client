@@ -1,4 +1,11 @@
-<h1>
-  {{title}}
-</h1>
-<router-outlet></router-outlet>
+<nav class="navbar navbar-fixed-top">
+  <a class="navbar-brand" href="#">Tasty</a>
+  <ul class="nav navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+    </li>
+  </ul>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
