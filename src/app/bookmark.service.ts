@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -12,6 +12,7 @@ import { SERVER_URL } from './secrets';
 export class BookmarkService {
 
   private bookmarksUrl = SERVER_URL + 'bookmarks';
+  private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) { }
 
@@ -20,6 +21,13 @@ export class BookmarkService {
     return this.http.get(this.bookmarksUrl)
               .toPromise()
               .then(response => response.json() as Bookmark[])
+              .catch(this.handleError);
+  }
+
+  create(data: Object): Promise<Bookmark> {
+    return this.http.post(this.bookmarksUrl, JSON.stringify(data), {headers: this.headers})
+              .toPromise()
+              .then(res => res.json().data)
               .catch(this.handleError);
   }
 
