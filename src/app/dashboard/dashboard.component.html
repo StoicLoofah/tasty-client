@@ -1,7 +1,9 @@
 <div class="row">
   <div class="col-sm-3">
     <h2>Tags</h2>
-    <span *ngFor="let tag of tags" class="tag tag-default">{{ tag.name }}</span>
+    <div class="tag-list">
+      <span *ngFor="let tag of tags" class="tag tag-default">{{ tag.name }}</span>
+    </div>
   </div>
   <div class="col-sm-9">
     <h2>Bookmarks</h2>
@@ -10,7 +12,9 @@
         <h4><a href="{{ bookmark.url }}" target="_blank">{{ bookmark.title }}</a></h4>
         <span>{{ bookmark.timeAdded }}</span>
         <p>{{ bookmark.notes }}</p>
-        <span *ngFor="let tag of bookmark.tags" class="tag tag-default">{{ tag }}</span>
+        <div class="tag-list">
+          <span *ngFor="let tag of bookmark.tags" class="tag tag-default">{{ tag }}</span>
+        </div>
       </li>
     </ul>
   </div>

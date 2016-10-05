@@ -1,0 +1,11 @@
+<ul class="tag-editor-container form-control">
+  <li *ngFor="let tag of tags"><span class="tag tag-default">{{tag}} <span class="remove" (click)="removeTag(tag);">&times;</span></span></li>
+  <li><input class="tag-editor-input" type="text" (keyup)="onKey($event);" /></li>
+</ul>
+<div class="tag-editor-dropdown">
+  <ul>
+    <li>toread</li>
+    <li>reference</li>
+    <li>science</li>
+  </ul>
+</div>

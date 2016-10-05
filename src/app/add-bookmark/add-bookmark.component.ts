@@ -8,6 +8,7 @@ import { BookmarkService } from '../bookmark.service.ts';
   styleUrls: ['./add-bookmark.component.scss']
 })
 export class AddBookmarkComponent implements OnInit {
+  tags: String[];
 
   constructor(private bookmarkService: BookmarkService) { }
 
@@ -27,7 +28,12 @@ export class AddBookmarkComponent implements OnInit {
     this.bookmarkService.create({
       title,
       url,
-      notes
+      notes,
+      tags: this.tags,
     }).then(bookmark => console.log(bookmark));
+  }
+
+  updateTags(tags) {
+    this.tags = tags;
   }
 }
