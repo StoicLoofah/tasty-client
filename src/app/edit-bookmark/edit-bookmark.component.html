@@ -17,4 +17,5 @@
     <tag-editor [tags]="bookmark.tags" (onTagsUpdated)="updateTags($event);"></tag-editor>
   </div>
   <button class="btn btn-primary" (click)="saveBookmark();">Update</button>
+  <a class="pull-xs-right" href="javascript:void(0);" (click)="deleteBookmark();">Delete</a>
 </div>

@@ -27,6 +27,14 @@ export class EditBookmarkComponent implements OnInit {
     });
   }
 
+  deleteBookmark(): void {
+    if(confirm('Are you sure you want to delete this bookmark?')) {
+      this.bookmarkService.delete(this.bookmark).then(() => {
+        this.router.navigate(['/dashboard']);
+      });
+    }
+  }
+
   saveBookmark(title, url, notes) {
     this.bookmarkService.update(this.bookmark).then(() => {
       this.router.navigate(['/dashboard']);

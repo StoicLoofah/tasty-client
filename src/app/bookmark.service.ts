@@ -36,6 +36,14 @@ export class BookmarkService {
               .catch(this.handleError);
   }
 
+  delete(bookmark: Bookmark): Promise<Bookmark> {
+    const url = `${this.bookmarksUrl}/${bookmark.id}`;
+    return this.http.delete(url, {headers: this.headers})
+              .toPromise()
+              .then(() => null)
+              .catch(this.handleError);
+  }
+
   update(bookmark: Bookmark): Promise<Bookmark> {
     const url = `${this.bookmarksUrl}/${bookmark.id}`;
     return this.http.put(url, JSON.stringify(bookmark), {headers: this.headers})
