@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Bookmark } from '../bookmark';
 import { BookmarkService } from '../bookmark.service';
@@ -14,7 +14,8 @@ export class EditBookmarkComponent implements OnInit {
 
   constructor(
     private bookmarkService: BookmarkService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -27,7 +28,9 @@ export class EditBookmarkComponent implements OnInit {
   }
 
   saveBookmark(title, url, notes) {
-    this.bookmarkService.update(this.bookmark);
+    this.bookmarkService.update(this.bookmark).then(() => {
+      this.router.navigate(['/dashboard']);
+    });
   }
 
   updateTags(tags) {

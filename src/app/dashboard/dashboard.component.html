@@ -4,7 +4,7 @@
     <div class="tag-list">
       <span
         *ngFor="let tag of tags"
-        [ngClass]="{'tag': true, 'tag-default': true, 'tag-primary': filteringTagNames.indexOf(tag.name) != -1}"
+        [ngClass]="{'selectable-tag': true, 'tag': true, 'tag-default': true, 'tag-primary': filteringTagNames.indexOf(tag.name) != -1}"
         (click)="toggleFilter(tag);"
         >{{ tag.name }}</span>
     </div>
@@ -13,9 +13,9 @@
     <h2>Bookmarks</h2>
     <ul class="list-group">
       <li *ngFor="let bookmark of filteredBookmarks()" class="list-group-item">
+        <a class="pull-xs-right" href="javascript:void(0);" (click)="gotoEditBookmark(bookmark);">Edit</a>
         <h4><a href="{{ bookmark.url }}" target="_blank">{{ bookmark.title }}</a></h4>
-        <a (click)="gotoEditBookmark(bookmark);">Edit</a>
-        <span>{{ bookmark.timeAdded }}</span>
+        <small>{{ bookmark.timeAdded }}</small>
         <p>{{ bookmark.notes }}</p>
         <div class="tag-list">
           <span *ngFor="let tag of bookmark.tags" class="tag tag-default">{{ tag }}</span>

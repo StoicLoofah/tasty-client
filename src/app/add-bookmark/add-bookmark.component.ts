@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { BookmarkService } from '../bookmark.service.ts';
 
@@ -10,7 +11,10 @@ import { BookmarkService } from '../bookmark.service.ts';
 export class AddBookmarkComponent implements OnInit {
   tags: string[];
 
-  constructor(private bookmarkService: BookmarkService) { }
+  constructor(
+    private bookmarkService: BookmarkService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
@@ -30,7 +34,9 @@ export class AddBookmarkComponent implements OnInit {
       url,
       notes,
       tags: this.tags,
-    }).then(bookmark => console.log(bookmark));
+    }).then(() => {
+      this.router.navigate(['/dashboard']);
+    });
   }
 
   updateTags(tags) {
