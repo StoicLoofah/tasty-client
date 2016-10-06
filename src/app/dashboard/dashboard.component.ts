@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Bookmark } from '../bookmark.ts';
 import { BookmarkService } from '../bookmark.service.ts';
@@ -14,13 +15,13 @@ export class DashboardComponent implements OnInit {
   tags: Tag[] = [];
   filteringTagNames: string[] = [];
 
-  constructor(private bookmarkService: BookmarkService) { }
+  constructor(
+    private bookmarkService: BookmarkService,
+    private router: Router
+  ) { }
 
-  getBookmarks(): void {
-    this.bookmarkService.getBookmarks().then(bookmarks => {
-      this.bookmarks = bookmarks;
-      this.updateTags(bookmarks);
-    });
+  ngOnInit() {
+    this.getBookmarks();
   }
 
   filteredBookmarks() {
@@ -38,8 +39,16 @@ export class DashboardComponent implements OnInit {
     return [];
   }
 
-  ngOnInit() {
-    this.getBookmarks();
+  getBookmarks(): void {
+    this.bookmarkService.getBookmarks().then(bookmarks => {
+      this.bookmarks = bookmarks;
+      this.updateTags(bookmarks);
+    });
+  }
+
+  gotoEditBookmark(bookmark: Bookmark): void {
+    let link = ['/edit-bookmark', bookmark.id];
+    this.router.navigate(link);
   }
 
   toggleFilter(tag: Tag) {

@@ -1,5 +1,5 @@
 export class Bookmark {
-    // id: number;
+    id: string;
     notes: string;
     tags: string[];
     title: string;

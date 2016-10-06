@@ -1,0 +1,20 @@
+<h2>Edit Bookmark</h2>
+<div>
+  <div class="form-group">
+    <label>Title</label>
+    <input [(ngModel)]="bookmark.title" class="form-control" required="on" />
+  </div>
+  <div class="form-group">
+    <label>URL</label>
+    <input [(ngModel)]="bookmark.url" class="form-control" required="on" type="url" />
+  </div>
+  <div class="form-group">
+    <label>Notes</label>
+    <textarea [(ngModel)]="bookmark.notes" class="form-control"></textarea>
+  </div>
+  <div class="form-group">
+    <label>Tags</label>
+    <tag-editor [tags]="bookmark.tags" (onTagsUpdated)="updateTags($event);"></tag-editor>
+  </div>
+  <button class="btn btn-primary" (click)="saveBookmark();">Update</button>
+</div>

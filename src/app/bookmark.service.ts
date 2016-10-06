@@ -24,10 +24,23 @@ export class BookmarkService {
               .catch(this.handleError);
   }
 
+  getBookmark(id: string): Promise<Bookmark> {
+    return this.getBookmarks().
+      then(bookmarks => bookmarks.find(bookmark => bookmark.id == id));
+  }
+
   create(data: Object): Promise<Bookmark> {
     return this.http.post(this.bookmarksUrl, JSON.stringify(data), {headers: this.headers})
               .toPromise()
               .then(res => res.json().data)
+              .catch(this.handleError);
+  }
+
+  update(bookmark: Bookmark): Promise<Bookmark> {
+    const url = `${this.bookmarksUrl}/${bookmark.id}`;
+    return this.http.put(url, JSON.stringify(bookmark), {headers: this.headers})
+              .toPromise()
+              .then(() => bookmark)
               .catch(this.handleError);
   }
 

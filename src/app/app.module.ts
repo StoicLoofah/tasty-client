@@ -9,13 +9,15 @@ import { BookmarkService } from './bookmark.service'
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TastyClientRoutingModule } from './app-routing.module';
 import { TagEditorComponent } from './tag-editor/tag-editor.component';
+import { EditBookmarkComponent } from './edit-bookmark/edit-bookmark.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     AddBookmarkComponent,
-    TagEditorComponent
+    TagEditorComponent,
+    EditBookmarkComponent
   ],
   imports: [
     BrowserModule,

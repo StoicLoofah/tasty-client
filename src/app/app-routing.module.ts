@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddBookmarkComponent } from './add-bookmark/add-bookmark.component';
+import { EditBookmarkComponent } from './edit-bookmark/edit-bookmark.component';
 
 const routes: Routes = [
     {
@@ -17,6 +18,10 @@ const routes: Routes = [
     {
         path: 'add-bookmark',
         component: AddBookmarkComponent
+    },
+    {
+        path: 'edit-bookmark/:id',
+        component: EditBookmarkComponent
     }
 ];
 

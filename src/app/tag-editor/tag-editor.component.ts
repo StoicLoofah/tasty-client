@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'tag-editor',
@@ -7,15 +7,14 @@ import { Component, EventEmitter, OnInit } from '@angular/core';
   styleUrls: ['./tag-editor.component.scss']
 })
 export class TagEditorComponent implements OnInit {
-  tags: String[];
-  onTagsUpdated: EventEmitter<String[]>;
+  @Input() tags: string[];
+  onTagsUpdated: EventEmitter<string[]>;
 
   constructor() {
     this.onTagsUpdated = new EventEmitter();
   }
 
   ngOnInit() {
-    this.tags = [];
   }
 
   onKey(event: KeyboardEvent) {
