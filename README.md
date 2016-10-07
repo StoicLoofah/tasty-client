@@ -1,31 +1,34 @@
-# TastyClient
+# Tasty Client
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.16.
+This is the frontend client for Tasty, a bookmarking web app inspired by delicious. It should be used in conjunction with [tasty-server](https://github.com/StoicLoofah/tasty-server).
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Currently, it supports viewing and editing bookmarks and tags, but it does not offer any authentication for user-specific data.
 
-## Code scaffolding
+It is built using Angular 2 and TypeScript through [angular-cli](https://github.com/angular/angular-cli).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class`.
+This project was built during Zanbato Hack Week Fall 2016.
 
-## Build
+## Setup
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+You can use angular-cli as expected. To get the client running,
 
-## Running unit tests
+1. Install Node.js
+2. Install angular-cli globally according to its instructions
+3. Check out this repo and `cd` into it
+4. `npm install` all of the packages for this project
+5. Setup a tasty-server.
+6. Create a `app/src/secrets.ts` with a reference to the tasty-server e.g. `export const SERVER_URL: string = 'http://localhost:10010/';`
+6. Launch the client with `ng serve` and navigate to the site at `http://localhost:4200`.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+For development, I ran it locally on OSX 10.11 and installed Node.js and MongoDB through Homebrew.
 
-## Running end-to-end tests
+## Additional Notes
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/). 
-Before running the tests make sure you are serving the app via `ng serve`.
+This project has not progressed far enough to use any real build tools. angular-cli offers:
 
-## Deploying to Github Pages
+* `ng build` to build the project
+* `ng test` to run unit tests
+* `ng e2e` to run end-to-end tests
+* `ng github-pages:deploy` to deploy to Github Pages
 
-Run `ng github-pages:deploy` to deploy to Github Pages.
-
-## Further help
-
-To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+However, no tests have been written, and no build or deployment has been attempted
